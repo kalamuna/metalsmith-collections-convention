@@ -2,21 +2,28 @@
 
 var metalsmithCollections = require('metalsmith-collections')
 var extend = require('extend')
-var match = require('multimatch')
+var match = require('minimatch').match
 var path = require('path')
 
 module.exports = function (opts) {
   return function (files, metalsmith, done) {
     // Collect all .collection files.
     var collections = {}
-    for (var file in files) {
-      // Check if it matches the convention.
-      if (match(file, '**.collection')[0]) {
-        // Add it to the Collections array.
-        collections[path.basename(file, '.collection')] = files[file]
-        // Remove the file since we've processed the collection.
-        delete files[file]
-      }
+    var list = match(Object.keys(files), '*.collection', {
+      matchBase: true
+    })
+
+    // Loop through each one and add it to the collection.
+    for (var i in list) {
+      var filename = list[i]
+      // Retrieve the collection name.
+      var name = path.basename(filename, '.collection')
+
+      // Add it to the collection.
+      collections[name] = files[filename]
+
+      // Remove the file since we've processed the collection.
+      delete files[filename]
     }
 
     // Construct the options for Metalsmith Collections.

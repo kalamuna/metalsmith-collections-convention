@@ -1,6 +1,6 @@
 {
   "name": "metalsmith-collections-convention",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Metalsmith Collections Convention Plugin",
   "main": "index.js",
   "files": [
@@ -24,7 +24,7 @@
   "dependencies": {
     "extend": "^3.0.0",
     "metalsmith-collections": "^0.7.0",
-    "multimatch": "^2.0.0"
+    "minimatch": "^2.0.8"
   },
   "devDependencies": {
     "assert-dir-equal": "^1.0.1",
