@@ -11,17 +11,18 @@
 
 ## Usage
 
-Each collection metadata is constucted through files named `<name>.collection`.
+Each collection is constucted through defining files named `<name>.collection`.
 
 ### Example
-#### src/articles.collection
+#### `src/articles.collection`
 ``` yaml
 ---
 pattern: 'articles/*.md'
 sortBy: 'date'
 reverse: true
 ---
-This is the collection of articles.
+This is the collection of articles. It is available at:
+  metalsmith.metadata().collections.articles
 ```
 
 ### CLI
