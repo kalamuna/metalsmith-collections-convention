@@ -14,8 +14,9 @@ module.exports = function (opts) {
     })
 
     // Loop through each one and add it to the collection.
+    var filename
     for (var i in list) {
-      var filename = list[i]
+      filename = list[i]
       // Retrieve the collection name.
       var name = path.basename(filename, '.collection')
 
@@ -24,6 +25,30 @@ module.exports = function (opts) {
 
       // Remove the file since we've processed the collection.
       delete files[filename]
+    }
+
+    // Construct additional collections from file metadata.
+    list = Object.keys(files)
+    for (i in list) {
+      filename = list[i]
+      var collection = files[filename].collection
+      if (collection) {
+        var collectionName = collection
+        // Check if it's an object that defines its own collection.
+        if (collection !== null && typeof collection === 'object') {
+          // Name is a required property.
+          if (collection.name) {
+            collectionName = collection.name
+            delete collection.name
+          } else {
+            return done('Collection is defined with an object, but does not provide the name.')
+          }
+
+          // Queue the collection object and redefine it in the file.
+          collections[collectionName] = extend({}, collections[collectionName], collection)
+          files[filename].collection = collectionName
+        }
+      }
     }
 
     // Construct the options for Metalsmith Collections.

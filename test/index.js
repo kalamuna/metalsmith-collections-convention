@@ -3,22 +3,42 @@ var collections = require('../')
 var Metalsmith = require('metalsmith')
 var assert = require('assert')
 
+var titles = [
+  'Other Article!',
+  'Something',
+  'Zoo Article'
+]
+
 /* global it */
-it('should match collections by pattern', function (done) {
-  var metalsmith = Metalsmith('test/fixtures/basic')
-  metalsmith
-    .use(collections())
-    .build(function (err) {
-      if (err) {
-        return done(err)
-      }
+function test (name) {
+  it('should match collections in ' + name, function (done) {
+    var path = 'test/fixtures/' + name
+    var metalsmith = Metalsmith(path)
+    metalsmith
+      .use(collections())
+      .build(function (err) {
+        if (err) {
+          return done(err)
+        }
 
-      // Ensure the collection was loaded correctly.
-      assert.equal(3, metalsmith.metadata().articles.length)
+        // Ensure the collection was loaded correctly.
+        assert.equal(3, metalsmith.metadata().articlelist.length)
 
-      // Check whether the files were build just file.
-      assertDir('test/fixtures/basic/build', 'test/fixtures/basic/expected')
+        // Ensure the titles match.
+        for (var i in metalsmith.metadata().articlelist) {
+          var file = metalsmith.metadata().articlelist[i]
+          if (file) {
+            assert.equal(file.title, titles[i])
+          }
+        }
 
-      done()
-    })
-})
+        // Check whether the files were build just file.
+        assertDir(path + '/build', path + '/expected')
+
+        done()
+      })
+  })
+}
+
+test('basic')
+test('metadata')

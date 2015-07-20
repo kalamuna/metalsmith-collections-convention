@@ -1,7 +1,6 @@
 ---
 pattern: 'articles/*.md'
-sortBy: 'date'
-reverse: true
+sortBy: 'title'
 ---
 
 This is the collection of articles.

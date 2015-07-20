@@ -9,22 +9,6 @@
 
     npm install --save metalsmith-collections-convention
 
-## Usage
-
-Each collection is constucted through defining files named `<name>.collection`.
-
-### Example
-#### `src/articles.collection`
-``` yaml
----
-pattern: 'articles/*.md'
-sortBy: 'date'
-reverse: true
----
-This is the collection of articles. It is available at:
-  metalsmith.metadata().collections.articles
-```
-
 ### CLI
 
 If you are using the command-line version of Metalsmith, you can install via npm, and then add the `metalsmith-jstransformer` key to your `metalsmith.json` file:
@@ -45,6 +29,50 @@ If you are using the JS Api for Metalsmith, then you can require the module and 
 var collections = require('metalsmith-collection-convention');
 
 metalsmith.use(collections());
+```
+
+## Usage
+
+There are two different methods of define collections. First, by using `<name>.collection` file convention, or by defining the collection in source file meta-data.
+
+### Convention
+
+Each collection is constucted through defining files named `<name>.collection`.
+
+#### `src/articles.collection`
+``` yaml
+---
+pattern: 'articles/*.md'
+sortBy: 'date'
+reverse: true
+---
+This is the collection of articles. It is available at:
+  metalsmith.metadata().articles
+```
+
+### Metadata
+
+You can define which collection source files are placed by placing them in the meta-data.
+
+#### `src/articles/foo.md`
+``` yaml
+---
+collection: articles
+---
+This article will appear in the articles collection. It is available at:
+  metalsmith.metadata().articles
+```
+
+#### `src/documents/bar.md`
+``` yaml
+---
+collection:
+  name: documents
+  sortBy: title
+---
+This article will appear in the documents collection, sorted by title. It is
+available at:
+  metalsmith.metadata().documents
 ```
 
 ## License
