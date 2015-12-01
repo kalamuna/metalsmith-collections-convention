@@ -10,10 +10,10 @@ var titles = [
 ]
 
 /* global it */
-function test (name) {
+function test(name) {
   it('should match collections in ' + name, function (done) {
     var path = 'test/fixtures/' + name
-    var metalsmith = Metalsmith(path)
+    var metalsmith = new Metalsmith(path)
     metalsmith
       .use(collections())
       .build(function (err) {
@@ -22,13 +22,16 @@ function test (name) {
         }
 
         // Ensure the collection was loaded correctly.
-        assert.equal(3, metalsmith.metadata().articlelist.length)
+        var articles = this.metadata().articlelist
+        assert.equal(3, articles.length)
 
         // Ensure the titles match.
-        for (var i in metalsmith.metadata().articlelist) {
-          var file = metalsmith.metadata().articlelist[i]
-          if (file) {
-            assert.equal(file.title, titles[i])
+        for (var i in articles) {
+          if (articles.hasOwnProperty(i)) {
+            var file = articles[i]
+            if (file) {
+              assert.equal(file.title, titles[i])
+            }
           }
         }
 

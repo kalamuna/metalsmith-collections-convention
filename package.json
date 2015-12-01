@@ -6,7 +6,7 @@
     "index.js"
   ],
   "scripts": {
-    "test": "mocha && standard index.js test/index.js"
+    "test": "mocha && xo --no-semicolon --space"
   },
   "repository": {
     "type": "git",
@@ -23,12 +23,12 @@
   "dependencies": {
     "extend": "^3.0.0",
     "metalsmith-collections": "^0.7.0",
-    "minimatch": "^2.0.8"
+    "minimatch": "^3.0.0"
   },
   "devDependencies": {
     "assert-dir-equal": "^1.0.1",
-    "metalsmith": "^1.7.0",
+    "metalsmith": "^2.1.0",
     "mocha": "*",
-    "standard": "^4.3.3"
+    "xo": "^0.11.2"
   }
 }
