@@ -1,7 +1,7 @@
-var assertDir = require('assert-dir-equal')
-var collections = require('../')
-var Metalsmith = require('metalsmith')
 var assert = require('assert')
+var assertDir = require('assert-dir-equal')
+var Metalsmith = require('metalsmith')
+var collections = require('../')
 
 var titles = [
   'Other Article!',
@@ -26,14 +26,11 @@ function test(name) {
         assert.equal(3, articles.length)
 
         // Ensure the titles match.
-        for (var i in articles) {
-          if (articles.hasOwnProperty(i)) {
-            var file = articles[i]
-            if (file) {
-              assert.equal(file.title, titles[i])
-            }
+        articles.forEach(function (file, i) {
+          if (file) {
+            assert.equal(file.title, titles[i])
           }
-        }
+        })
 
         // Check whether the files were build just file.
         assertDir(path + '/build', path + '/expected')
