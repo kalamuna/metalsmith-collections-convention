@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.1.1: 2016-06-28
+
+- Updated the coding standards
+
 ## v1.1.0: 2015-07-20
 
 - Allow defining collection behavior in file metadata
