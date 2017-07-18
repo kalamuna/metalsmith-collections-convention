@@ -1,5 +1,7 @@
 # Metalsmith Collections Convention Plugin [![NPM version](https://img.shields.io/npm/v/metalsmith-collections-convention.svg)](https://www.npmjs.org/package/metalsmith-collections-convention)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/RobLoach/metalsmith-collections-convention.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://img.shields.io/travis/RobLoach/metalsmith-collections-convention/master.svg)](https://travis-ci.org/RobLoach/metalsmith-collections-convention)
 [![Dependency Status](https://david-dm.org/RobLoach/metalsmith-collections-convention.png)](https://david-dm.org/RobLoach/metalsmith-collections-convention)
 
