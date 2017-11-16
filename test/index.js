@@ -1,9 +1,9 @@
-var assert = require('assert')
-var assertDir = require('assert-dir-equal')
-var Metalsmith = require('metalsmith')
-var collections = require('../')
+const assert = require('assert')
+const assertDir = require('assert-dir-equal')
+const Metalsmith = require('metalsmith')
+const collections = require('../')
 
-var titles = [
+const titles = [
   'Other Article!',
   'Something',
   'Zoo Article'
@@ -11,9 +11,9 @@ var titles = [
 
 /* global it */
 function test(name) {
-  it('should match collections in ' + name, function (done) {
-    var path = 'test/fixtures/' + name
-    var metalsmith = new Metalsmith(path)
+  it('should match collections in ' + name, done => {
+    const path = 'test/fixtures/' + name
+    const metalsmith = new Metalsmith(path)
     metalsmith
       .use(collections())
       .build(function (err) {
@@ -22,11 +22,11 @@ function test(name) {
         }
 
         // Ensure the collection was loaded correctly.
-        var articles = this.metadata().articlelist
+        const articles = this.metadata().articlelist
         assert.equal(3, articles.length)
 
         // Ensure the titles match.
-        articles.forEach(function (file, i) {
+        articles.forEach((file, i) => {
           if (file) {
             assert.equal(file.title, titles[i])
           }
