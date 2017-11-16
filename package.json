@@ -1,6 +1,6 @@
 {
   "name": "metalsmith-collections-convention",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Metalsmith Collections Convention Plugin",
   "files": [
     "index.js"
