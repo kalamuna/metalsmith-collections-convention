@@ -11,16 +11,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/RobLoach/metalsmith-collections-convention"
+    "url": "git://github.com/kalamuna/metalsmith-collections-convention"
   },
   "keywords": [
     "metalsmith"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/RobLoach/metalsmith-collections-convention/issues"
+    "url": "https://github.com/kalamuna/metalsmith-collections-convention/issues"
   },
-  "homepage": "https://github.com/RobLoach/metalsmith-collections-convention",
+  "homepage": "https://github.com/kalamuna/metalsmith-collections-convention",
   "dependencies": {
     "extend": "^3.0.1",
     "metalsmith-collections": "^0.9.0",
