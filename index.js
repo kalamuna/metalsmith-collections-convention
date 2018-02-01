@@ -33,7 +33,7 @@ module.exports = function (opts) {
     // Construct additional collections from file metadata.
     Object.keys(files).forEach(filename => {
       const collection = files[filename].collection
-      if (collection) {
+      if (collection && !Array.isArray(collection)) {
         let collectionName = collection
         // Check if it's an object that defines its own collection.
         if (collection !== null && typeof collection === 'object') {
