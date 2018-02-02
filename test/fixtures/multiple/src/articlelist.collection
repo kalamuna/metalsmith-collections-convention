@@ -1,0 +1,6 @@
+---
+pattern: 'articles/*.md'
+sortBy: 'title'
+---
+
+This is the collection of articles.

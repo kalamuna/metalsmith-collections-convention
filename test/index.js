@@ -10,7 +10,7 @@ const titles = [
 ]
 
 /* global it */
-function test(name) {
+function test(name, numberOfItems = 3) {
   it('should match collections in ' + name, done => {
     const path = 'test/fixtures/' + name
     const metalsmith = new Metalsmith(path)
@@ -23,14 +23,19 @@ function test(name) {
 
         // Ensure the collection was loaded correctly.
         const articles = this.metadata().articlelist
-        assert.equal(3, articles.length)
+        assert.equal(numberOfItems, articles.length)
 
-        // Ensure the titles match.
-        articles.forEach((file, i) => {
-          if (file) {
-            assert.equal(file.title, titles[i])
-          }
-        })
+        if (name === 'multiple') {
+          const bikes = this.metadata().bikes
+          assert.equal(bikes.length, 2)
+        } else {
+          // Ensure the titles match.
+          articles.forEach((file, i) => {
+            if (file) {
+              assert.equal(file.title, titles[i])
+            }
+          })
+        }
 
         // Check whether the files were build just file.
         assertDir(path + '/build', path + '/expected')
@@ -42,3 +47,4 @@ function test(name) {
 
 test('basic')
 test('metadata')
+test('multiple', 4)
