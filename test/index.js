@@ -10,7 +10,10 @@ const titles = [
 ]
 
 /* global it */
-function test(name, numberOfItems = 3) {
+function test(name, numberOfItems) {
+  if (!numberOfItems) {
+    numberOfItems = 3
+  }
   it('should match collections in ' + name, done => {
     const path = 'test/fixtures/' + name
     const metalsmith = new Metalsmith(path)
