@@ -1,5 +1,14 @@
 # Changelog
 
+## v1.3.0: 2018-02-02
+
+- Allow for multiple collections
+  - By [@thiagodemellobueno](https://github.com/thiagodemellobueno)
+
+## v1.2.0: 2017-11-16
+
+- Update dependencies
+
 ## v1.1.1: 2016-06-28
 
 - Updated the coding standards

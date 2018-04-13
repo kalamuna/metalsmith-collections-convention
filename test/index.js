@@ -1,19 +1,22 @@
-var assert = require('assert')
-var assertDir = require('assert-dir-equal')
-var Metalsmith = require('metalsmith')
-var collections = require('../')
+const assert = require('assert')
+const assertDir = require('assert-dir-equal')
+const Metalsmith = require('metalsmith')
+const collections = require('../')
 
-var titles = [
+const titles = [
   'Other Article!',
   'Something',
   'Zoo Article'
 ]
 
 /* global it */
-function test(name) {
-  it('should match collections in ' + name, function (done) {
-    var path = 'test/fixtures/' + name
-    var metalsmith = new Metalsmith(path)
+function test(name, numberOfItems) {
+  if (!numberOfItems) {
+    numberOfItems = 3
+  }
+  it('should match collections in ' + name, done => {
+    const path = 'test/fixtures/' + name
+    const metalsmith = new Metalsmith(path)
     metalsmith
       .use(collections())
       .build(function (err) {
@@ -22,15 +25,20 @@ function test(name) {
         }
 
         // Ensure the collection was loaded correctly.
-        var articles = this.metadata().articlelist
-        assert.equal(3, articles.length)
+        const articles = this.metadata().articlelist
+        assert.equal(numberOfItems, articles.length)
 
-        // Ensure the titles match.
-        articles.forEach(function (file, i) {
-          if (file) {
-            assert.equal(file.title, titles[i])
-          }
-        })
+        if (name === 'multiple') {
+          const bikes = this.metadata().bikes
+          assert.equal(bikes.length, 2)
+        } else {
+          // Ensure the titles match.
+          articles.forEach((file, i) => {
+            if (file) {
+              assert.equal(file.title, titles[i])
+            }
+          })
+        }
 
         // Check whether the files were build just file.
         assertDir(path + '/build', path + '/expected')
@@ -42,3 +50,4 @@ function test(name) {
 
 test('basic')
 test('metadata')
+test('multiple', 4)
