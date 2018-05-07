@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.3.1: 2018-05-07
+
+- Update dependencies
+
 ## v1.3.0: 2018-02-02
 
 - Allow for multiple collections
