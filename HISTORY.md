@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.3.1: 2018-05-07
+## v1.3.2: 2018-05-07
 
 - Update dependencies
 
