@@ -19,23 +19,23 @@ function test(name, numberOfItems) {
 		const metalsmith = new Metalsmith(path)
 		metalsmith
 			.use(collections())
-			.build(function (err) {
-				if (err) {
-					return done(err)
+			.build(function (error) {
+				if (error) {
+					return done(error)
 				}
 
 				// Ensure the collection was loaded correctly.
 				const articles = this.metadata().articlelist
-				assert.equal(numberOfItems, articles.length)
+				assert.strictEqual(numberOfItems, articles.length)
 
 				if (name === 'multiple') {
 					const bikes = this.metadata().bikes // eslint-disable-line prefer-destructuring
-					assert.equal(bikes.length, 2)
+					assert.strictEqual(bikes.length, 2)
 				} else {
 					// Ensure the titles match.
 					articles.forEach((file, i) => {
 						if (file) {
-							assert.equal(file.title, titles[i])
+							assert.strictEqual(file.title, titles[i])
 						}
 					})
 				}

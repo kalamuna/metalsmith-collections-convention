@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/kalamuna/metalsmith-collections-convention",
   "dependencies": {
-    "extend": "^3.0.1",
+    "extend": "^3.0.2",
     "metalsmith-collections": "^0.9.0",
     "minimatch": "^3.0.4"
   },
@@ -30,6 +30,6 @@
     "assert-dir-equal": "^1.1.0",
     "metalsmith": "^2.3.0",
     "mocha": "*",
-    "xo": "^0.21.0"
+    "xo": "^0.23.0"
   }
 }
