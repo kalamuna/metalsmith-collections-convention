@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.3.3: 2020-03-04
+
+- Update dependencies
+
 ## v1.3.2: 2018-05-07
 
 - Update dependencies
