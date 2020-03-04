@@ -5,3 +5,6 @@ node_js:
   - "11"
   - "12"
   - "13"
+
+notifications:
+  email: false
