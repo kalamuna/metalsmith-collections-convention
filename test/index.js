@@ -30,7 +30,7 @@ function test(name, numberOfItems) {
 				assert.strictEqual(numberOfItems, articles.length)
 
 				if (name === 'multiple') {
-					const bikes = this.metadata().bikes // eslint-disable-line prefer-destructuring
+					const bikes = this.metadata().bikes
 					assert.strictEqual(bikes.length, 2)
 				} else {
 					// Ensure the titles match.
